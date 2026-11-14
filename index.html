@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Групповой чат</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="auth" class="card" hidden>
+  <h1>Групповой чат</h1>
+  <div class="tabs" role="tablist">
+    <button type="button" id="tab-login" role="tab" aria-selected="true">Вход</button>
+    <button type="button" id="tab-register" role="tab" aria-selected="false">Регистрация</button>
+  </div>
+  <form id="auth-form" autocomplete="on">
+    <label>Имя пользователя
+      <input id="username" name="username" required maxlength="150" pattern="[\w.@+\-]+" autocomplete="username">
+    </label>
+    <label>Пароль
+      <input id="password" name="password" type="password" required minlength="6" autocomplete="current-password">
+    </label>
+    <p id="auth-error" class="error" role="alert"></p>
+    <button type="submit" id="auth-submit">Войти</button>
+  </form>
+</main>
+
+<section id="chat" class="chat" hidden>
+  <header>
+    <div><strong id="me"></strong> <span id="status" class="status">подключение…</span></div>
+    <button type="button" id="logout">Выйти</button>
+  </header>
+  <ul id="messages" aria-live="polite"></ul>
+  <form id="send-form">
+    <input id="text" placeholder="Напишите сообщение…" autocomplete="off" disabled>
+    <button type="submit" id="send" disabled>Отправить</button>
+  </form>
+</section>
+<script src="app.js"></script>
+</body>
+</html>
