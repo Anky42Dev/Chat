@@ -162,7 +162,22 @@ $('send-form').onsubmit = (e) => {
   if (!text || !ws || ws.readyState !== WebSocket.OPEN) return;
   ws.send(JSON.stringify({ type: 'CHAT_MESSAGE', payload: { text } }));
   $('text').value = '';
+  autosize();
 };
+
+function autosize() {
+  const t = $('text');
+  t.style.height = 'auto';
+  t.style.height = t.scrollHeight + 'px';
+}
+$('text').addEventListener('input', autosize);
+// Enter — отправить, Shift+Enter — новая строка
+$('text').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+    e.preventDefault();
+    $('send-form').requestSubmit();
+  }
+});
 
 $('logout').onclick = async () => {
   try { await api('/logout/'); } catch { /* всё равно выходим локально */ }

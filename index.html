@@ -32,8 +32,10 @@
   </header>
   <ul id="messages" aria-live="polite"></ul>
   <form id="send-form">
-    <input id="text" placeholder="Напишите сообщение…" autocomplete="off" disabled>
-    <button type="submit" id="send" disabled>Отправить</button>
+    <textarea id="text" rows="1" placeholder="Напишите сообщение…" aria-label="Сообщение" disabled></textarea>
+    <button type="submit" id="send" aria-label="Отправить" disabled>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z"/></svg>
+    </button>
   </form>
 </section>
 <script src="app.js"></script>
